@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -7,17 +7,31 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  defaultQuestion="pet";
-  answer='';
-  defaultGender='Male';
-  genders=['Male','Female'];
+  @ViewChild('f') signUpForm;
+  defaultQuestion = "pet";
+  submitted=false;
+  answer = '';
+  defaultGender = 'Male';
+  genders = ['Male', 'Female'];
+  user = {
+    username: '',
+    email: '',
+    secretQuestion: '',
+    gender: '',
+    answer: ''
+  };
 
   suggestUserName() {
     const suggestedName = 'Superuser';
   }
 
-  onSubmit(form: NgForm) {
-    console.log(form);
+  onSubmit() {
+    console.log(this.signUpForm);
+    this.submitted=true;
+    this.user.username=this.signUpForm.value.userData.username;
+    this.user.email=this.signUpForm.value.userData.email;
+    this.user.gender=this.signUpForm.value.gender;
+    this.user.secretQuestion=this.signUpForm.value.secret;
+    this.user.answer=this.signUpForm.value.questionAnswer;
   }
 }
