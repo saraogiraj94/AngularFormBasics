@@ -1,18 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { NgModule, Component } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { TdComponent } from './td/td.component';
+import { RcComponent } from './rc/rc.component';
+
+const appRoutes: Routes = [
+  { path: '', redirectTo: '/td', pathMatch: 'full' },
+  { path: 'td', component: TdComponent },
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TdComponent,
+    RcComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
