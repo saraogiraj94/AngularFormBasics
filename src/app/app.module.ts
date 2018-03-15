@@ -11,6 +11,7 @@ import { RcComponent } from './rc/rc.component';
 const appRoutes: Routes = [
   { path: '', redirectTo: '/td', pathMatch: 'full' },
   { path: 'td', component: TdComponent },
+  { path: 'rc', component: RcComponent}
 ];
 
 @NgModule({

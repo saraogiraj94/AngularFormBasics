@@ -1,3 +1,56 @@
-<p>
-  rc works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input 
+              type="text" 
+              id="username" 
+              formControlName="username"
+              class="form-control"
+              >
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Mail</label>
+            <input 
+              type="email" 
+              id="email" 
+              class="form-control"
+              formControlName="email"
+              >
+              
+          </div>
+        
+      
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input 
+              type="radio"
+              name="gender"
+              [value]=gender
+              formControlName="gender"
+            >{{gender}}
+          </label>
+        </div>
+        <button 
+          class="btn btn-primary" 
+          type="submit">
+          Submit</button>
+      </form>
+    </div>
+  </div>
+  <hr>
+  <div class="row" *ngIf="submitted">
+    <div class="col-sx-12">
+      <h3>Your Data</h3>
+      <p>Username : {{user.username}}</p>
+      <p>Mail : {{user.email}}</p>
+      <p>Secret question : {{user.secretQuestion}}</p>
+      <p>Answer : {{user.answer}}</p>
+      <p>Gender : {{user.gender}}</p>
+    </div>
+  </div>
+</div>
